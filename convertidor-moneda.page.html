@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>convertidor-moneda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">convertidor-moneda</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <div id="containes">
+  <ion-item>
+    <ion-label position="floating">Cantidad en Pesos Mexicanos</ion-label>
+    <ion-input type="number" [(ngModel)]="cantidadMXN"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Convertir a:</ion-label>
+    <ion-select [(ngModel)]="monedaDestino">
+      <ion-select-option value="USD">Dólar estadounidense (USD)</ion-select-option>
+      <ion-select-option value="INR">Rupia India (INR)</ion-select-option>
+      <ion-select-option value="EUR">Euro (EUR)</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="full" (click)="convertir()">Convertir</ion-button>
+
+  <ion-item *ngIf="resultado">
+    <ion-label>Resultado:</ion-label>
+    <ion-text>{{ resultado | currency: monedaDestino }}</ion-text>
+  </ion-item>
+</div>
+</ion-content>
